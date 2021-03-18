@@ -1,6 +1,6 @@
 'use strict';
 
-//catRoute
+//catController
 const express = require('express');
 const {cats} = catModel;
 

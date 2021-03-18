@@ -1,20 +1,20 @@
 'use strict';
 
-//catRoute
+//userRoute
 const express = require('express');
-const {cats} = catModel;
+const {users} = userModel;
 
-const cat_list_get = (req, res) => {
-    res.json(cats);
+const user_list_get = (req, res) => {
+    res.json(users);
 };
 
-const cat_get = (req, res) => {
+const user_get = (req, res) => {
     const id= req.params.id;
-    const cat = cats.filter((cat) => cat.id === id).pop();
-    res.json(cat);
+    const user = users.filter((user) => user.id === id).pop();
+    res.json(user);
 };
 
 module.exports = {
-    cat_list_get,
-    cat_get,
+    user_list_get,
+    user_get,
 };
