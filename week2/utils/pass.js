@@ -1,6 +1,9 @@
 'use strict';
    const passport = require('passport');
    const Strategy = require('passport-local').Strategy;
+   const passportJWT = require('passport-jwt');
+   const JWTSTrategy = passportJWT.Strategy;
+   const ExtractJWT =;
    const {getUserLogin} = require('../models/userModel');
 
    
@@ -21,4 +24,18 @@
        }
    ));
    
+passport.use(
+    new JWTSTrategy(
+        {
+            jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+            sexretOrKey: '1234',
+        },
+        (jwtPayload, done)=>{
+            console.log('payload: ', jwtPayload);
+            if(jwtPayload !== undefined)
+            return done(null, jwtPayload);
+        }
+    )
+);
+
    module.exports = passport;
