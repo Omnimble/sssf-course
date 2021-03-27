@@ -14,10 +14,15 @@ const users = [
   },
 ];
 
-const getUserLogin = (email) => {
-  const user = users.filter((user) => user.email === email).pop();
-  return users;
+const getUserLogin = ([email]) => {
+  const user = users.filter((usr) => {
+    if (usr.email === email) {
+      return usr;
+    }
+  });
+  return user[0];
 };
+
 
 module.exports = {
   users,
