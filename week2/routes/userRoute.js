@@ -8,12 +8,6 @@ const {
 } = require("../controllers/userController");
 const router = express.Router();
 
-// const authenticate = (req, res, next) => {
-//   // authentication
-// }
-
-// router.get('/', authenticate, user_list_get);
-
 router.get("/", user_list_get);
 
 router.get("/:id", user_get);
@@ -21,11 +15,11 @@ router.get("/:id", user_get);
 router.post("/", user_create_post);
 
 router.put("/", (req, res) => {
-  res.send("put");
+  res.send("Add users.");
 });
 
 router.delete("/", (req, res) => {
-  res.send("delete");
+  res.send("Delete users.");
 });
 
 module.exports = router;
