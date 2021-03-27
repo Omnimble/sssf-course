@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("week2_public_html"));
 
 app.use(express.urlencoded({extended: false}));
-//app.use('/cat', require('./route'));
-app.use("/cat", passport.authenticate("jwt", { session: false }), catRoute);
+app.use('/cat', require('./route'));
+//app.use("/cat", passport.authenticate("jwt", { session: false }), catRoute);
 app.use("/user", passport.authenticate("jwt", { session: false }), userRoute);
 app.use("/auth", authRoute);
