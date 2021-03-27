@@ -1,26 +1,25 @@
-"use strict";
-const jwt = require("jsonwebtoken");
-const passport = require("../utils/pass");
+'use strict';
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
 
 const login = (req, res) => {
-  passport.authenticate("local", { session: false }, (err, user, info) => {
-    console.log("login", info);
-
-    if (err || !user) {
-      return res.send("error");
-    }
-
-    req.login(user, { session: false }, (err) => {
-      if (err) {
-        return res.send("error");
-      }
-
-      const token = jwt.sign(user, "1234");
-      return res.json({ token });
-    });
-  })(req, res);
+    passport.authenticate('local', {session: false}, (err, user, info) => {
+        if (err || !user) {
+            return res.status(400).json({
+                message: "You donkey",
+                user: user,
+            });
+        }
+        req.login(user, {session: false}, (err) => {
+            if(err) {
+                res.send('error' + err);
+            }
+            const token = jwt.sign(user, 'your_jwt_secret');
+            return res.json({user, token});
+        });
+    })(req, res);
 };
 
 module.exports = {
-  login,
+    login,
 };
