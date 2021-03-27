@@ -3,7 +3,7 @@ const passport = require("passport");
 const Strategy = require("passport-local").Strategy;
 const passportJWT = require("passport-jwt");
 const JWTSTrategy = passportJWT.Strategy;
-const ExtractJWT = passportJWT.ExtractJWT;
+const ExtractJWT = passportJWT.ExtractJwt;
 const { getUserLogin } = require("../models/userModel");
 
 passport.use(
@@ -27,7 +27,7 @@ passport.use(
   new JWTSTrategy(
     {
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-      sexretOrKey: "1234",
+      secretOrKey: "1234",
     },
     (jwtPayload, done) => {
       console.log("payload: ", jwtPayload);

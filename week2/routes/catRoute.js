@@ -2,7 +2,7 @@
 
 //catRoute
 const express = require('express');
-const {cat_list_get, cat_get} = require ('../controllers/catController');
+const {cat_list_get, cat_get, cat_create_post} = require ('../controllers/catController');
 const router = express.Router();
 const multer = require('multer');
 
